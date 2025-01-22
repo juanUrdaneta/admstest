@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Navbar from "@/components/Navbar";
 import React from "react";
 export type CARD_TYPE = {
   timeFrame: {
@@ -57,18 +58,20 @@ const SERIES_MOCK_DATA: { seriesName: string; cards: CARD_TYPE[] }[] = [
 
 const page = () => {
   return (
-    <div className="w-screen h-screen bg-white">
-      <h1>Dashboard</h1>
-      {SERIES_MOCK_DATA.map((series, idx) => (
-        <div className="my-2" key={idx}>
-          <h2 className="mb-2">{series.seriesName}</h2>
-          <div className="flex gap-2">
-            {series.cards.map((card, idx) => (
-              <Card {...card} key={idx} />
-            ))}
+    <div className="w-screen h-screen flex flex-col items-center">
+      <Navbar />
+      <div className="p-2 w-full">
+        {SERIES_MOCK_DATA.map((series, idx) => (
+          <div className="my-2" key={idx}>
+            <h2 className="mb-2">{series.seriesName}</h2>
+            <div className="flex gap-2">
+              {series.cards.map((card, idx) => (
+                <Card {...card} key={idx} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

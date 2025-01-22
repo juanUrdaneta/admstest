@@ -1,6 +1,6 @@
 "use client";
 
-import { CARD_TYPE } from "@/app/home/page";
+import { CARD_TYPE } from "@/app/dashboard/page";
 import React from "react";
 
 type Props = {
