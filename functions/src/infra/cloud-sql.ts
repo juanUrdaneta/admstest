@@ -20,5 +20,6 @@ export const executeQuery = async (queryString: string, values: (string | number
 
   const result = await connection.query(queryString, values);
 
+  connection.release();
   return result;
 };

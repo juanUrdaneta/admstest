@@ -16,9 +16,6 @@ const Navbar = () => {
     }
   }, [router]);
 
-  if (!authApp.currentUser) {
-    return <div></div>;
-  }
   return (
     <div className="w-screen flex justify-center ">
       <nav className="w-full max-w-[1980px] flex justify-between items-center p-2 border-b-2 border-black">

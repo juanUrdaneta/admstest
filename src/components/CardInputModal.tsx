@@ -1,15 +1,22 @@
 "use client";
 
-import { CARD_TYPE } from "@/app/dashboard/page";
+import useLOP from "@/lib/hooks/useLOP";
+import { CardType } from "@/lib/infra/lineOfProduction";
 import React from "react";
 
 type Props = {
-  card: CARD_TYPE;
+  card: CardType;
   isOpen: boolean;
   setIsModalOpen: (isOpen: boolean) => void;
 };
 
 const CardInputModal = (props: Props) => {
+  const { updateCardOutput } = useLOP();
+
+  const [actualOutput, setActualOutput] = React.useState<string>(
+    props.card.actual?.toString() || "",
+  );
+
   if (!props.isOpen) {
     return null;
   }
@@ -19,9 +26,9 @@ const CardInputModal = (props: Props) => {
       <div className="w-[350px] max-w-2/3 h-[200px] bg-slate-200 relative rounded-lg p-4 flex justify-center items-center">
         <button
           className="absolute right-4 top-4"
-          onClick={(e) => {
+          onClick={async (e) => {
             e.stopPropagation();
-            console.log("Close button clicked");
+            updateCardOutput(parseInt(props.card.cardId), 1, parseInt(actualOutput), "2");
             props.setIsModalOpen(false);
           }}
         >
@@ -32,7 +39,8 @@ const CardInputModal = (props: Props) => {
           <label className="mr-4">Actual Output</label>
           <input
             name="actual-output"
-            type="number"
+            value={actualOutput}
+            onChange={(e) => setActualOutput(e.target.value)}
             className="px-2 py-1 rounded bg-white border border-slate-800"
           />
         </div>

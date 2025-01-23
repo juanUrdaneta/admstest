@@ -2,7 +2,7 @@ import { onRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 import { handleCardUpdate, handleGetCardsForLine } from "./handlers/handleCards";
 
-export const acceptRequest = onRequest(async (request, response) => {
+export const acceptRequest = onRequest({ cors: true }, async (request, response) => {
   try {
     const apiParam = request.query.api;
 

@@ -3,8 +3,8 @@ import { Card } from "../model/card";
 
 const getAddCardQuery = (card: Card) => {
   return {
-    text: "UPDATE cards SET actual_output = $1 WHERE id = $2 AND shift_id = $3",
-    values: [card.actual_output, card.card_id, card.shift_id],
+    text: "UPDATE cards SET actual_output = $1 WHERE id = $2",
+    values: [card.actual_output, card.card_id],
   };
 };
 

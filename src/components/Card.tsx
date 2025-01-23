@@ -5,18 +5,11 @@ import React from "react";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config";
 import CardInputModal from "./CardInputModal";
+import { CardType } from "@/lib/infra/lineOfProduction";
 
 const { theme } = resolveConfig(tailwindConfig);
 
-type Props = {
-  timeFrame: {
-    start: string;
-    end: string;
-  };
-  target: number;
-  actual: number | null;
-  cardId: string;
-};
+type Props = CardType;
 
 const Card = (props: Props) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -29,7 +22,7 @@ const Card = (props: Props) => {
           backgroundColor:
             props.actual === null
               ? theme.colors.slate[400]
-              : props.target === props.actual
+              : props.target <= props.actual
               ? theme.colors.green[400]
               : theme.colors.red[400],
         }}
@@ -37,11 +30,11 @@ const Card = (props: Props) => {
         <p className=" border-b-2 border-b-black">Actual: {props.actual}</p>
         <p className=" ">Target: {props.target}</p>
       </div>
-      <div>
+      {/* <div>
         <p className="text-center text-xs">
-          {props.timeFrame.start}-{props.timeFrame.end}
+          {props.start}-{props.end}
         </p>
-      </div>
+      </div> */}
       <CardInputModal isOpen={isModalOpen} card={props} setIsModalOpen={setIsModalOpen} />
     </div>
   );
