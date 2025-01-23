@@ -19,7 +19,6 @@ export class FirebaseAuth implements AuthConfig {
 
   async signInWithEmailAndPassword(email: string, password: string) {
     const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-    console.log(userCredential);
     return userCredential.user.getIdToken();
   }
 }
