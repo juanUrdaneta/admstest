@@ -28,7 +28,7 @@ const CardInputModal = (props: Props) => {
           className="absolute right-4 top-4"
           onClick={async (e) => {
             e.stopPropagation();
-            updateCardOutput(parseInt(props.card.cardId), 1, parseInt(actualOutput), "2");
+            updateCardOutput(parseInt(props.card.cardId), 1, parseInt(actualOutput), "1");
             props.setIsModalOpen(false);
           }}
         >
