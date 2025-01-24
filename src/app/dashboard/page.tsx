@@ -9,7 +9,7 @@ const page = () => {
       <Navbar />
       <div className="p-2 w-full">
         <CardProvider>
-          <ShiftCards lineId="2" />
+          <ShiftCards lineId="1" />
         </CardProvider>
       </div>
     </div>
