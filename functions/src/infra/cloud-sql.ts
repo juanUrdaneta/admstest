@@ -4,7 +4,7 @@ async function getConnection(): Promise<Pool> {
   const pool = new Pool({
     database: "postgres",
     user: "postgres",
-    password: "987456321",
+    password: "654321",
     port: 5432,
     host: "34.39.136.195",
     ssl: {
